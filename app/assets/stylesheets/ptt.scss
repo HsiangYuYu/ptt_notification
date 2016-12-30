@@ -1,0 +1,31 @@
+// Place all the styles related to the ptt controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.col-lg-6
+{
+    margin-left: 25%;
+}
+h1
+{
+    text-align: center;
+}
+#result
+{
+    font-size: 21px;
+}
+p
+{
+    margin: 60px 25% 23px !important;
+}
+#search, #keyword
+{
+    font-size: 22px;
+}
+.input-group 
+{
+    display: inline-flex !important;
+}
+.text_field
+{
+    display: inline-flex;
+}

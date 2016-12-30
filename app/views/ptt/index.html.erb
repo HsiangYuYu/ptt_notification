@@ -1,0 +1,49 @@
+<%#=<% @main.css(".r-ent").each do |m| %>
+<%#=       <%= m.at_css(".title > a").text %>
+<%#=    <p></p>
+<%#=<% end %>    
+<h1>PTT 爬爬樂</h1>
+
+<%= form_tag ptt_search_path, :method => 'get' , remote: true  do %>
+<div class="col-lg-6">
+  <div class="input-group">
+      <div class="text_field">
+        <%= text_field_tag :search ,params[:search] , class:"form-control", placeholder:"輸入看板名",autofocus: "true"%>
+        <%= text_field_tag :keyword ,params[:keyword] , class:"form-control", placeholder:"輸入關鍵字",autofocus: "true"%>
+      </div>
+        <%#<%= hidden_field_tag :page, params[:page]=1 %> <%#傳送初始頁碼 %>
+        <%#<%= hidden_field_tag :view, params[:view]=1 %>
+    <span class="input-group-btn">
+        <%= submit_tag "Search", class:"btn btn-default", id:"button1"%>
+        <%= submit_tag "stop" ,class:"btn btn-default", id:"stop" , type: "button"%>
+        <%= submit_tag "Search", class:"btn btn-default", id:"button", style:"display:none"%>
+    </span>
+  </div>
+</div>
+<% end %>
+<p>
+<span id = 'result'>
+    <% render 'ptt/search' %>
+</span>
+
+<script>
+        var interval;
+        document.getElementById("button1").onclick=function(){
+            $("#button").click();
+            document.getElementById("button1").setAttribute("disabled", "disabled");
+                interval = setInterval(function(){ 
+                $("#button").click();
+                var originalTitle = document.title;
+                    },3000);
+        }
+        document.getElementById("stop").onclick=function(){
+                clearInterval(interval);
+                document.getElementById("button1").removeAttribute("disabled");
+                document.title = "PTT爬爬樂";
+        }
+         
+        
+</script>
+
+
+
